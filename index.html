@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SAI TEJA S — Portfolio</title>
+  <meta name="description" content="Portfolio of Sai Teja S — Aspiring Data Scientist | UI/UX Enthusiast | Full Stack Developer" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#071020;
+      --card:#071826;
+      --muted:#95a3b1;
+      --accent:#22d3ee;
+      --accent-2:#7c3aed;
+      --glass: rgba(255,255,255,0.025);
+      --radius:14px;
+      --container:1100px;
+      --maxcontent:900px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#06111a 0%, #071726 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px 18px;
+      line-height:1.5;
+    }
+
+    .wrap{max-width:var(--container);margin:0 auto;}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:28px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{
+      width:64px;height:64px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#041425;
+      box-shadow:0 6px 18px rgba(6,8,15,0.6)
+    }
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600;font-size:14px}
+    nav a:hover{color:var(--accent)}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:center;margin-bottom:36px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:24px;box-shadow:0 8px 30px rgba(4,6,12,0.6)}
+    .hero h2{margin:0;font-size:28px}
+    .tag{color:var(--accent);font-weight:700;margin-top:8px}
+    .hero p{color:var(--muted);margin-top:14px}
+
+    .ctas{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(34,211,238,0.12);cursor:pointer;font-weight:700;background:transparent;color:var(--accent)}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#031026;border:0;box-shadow:0 8px 26px rgba(124,58,237,0.12)}
+
+    /* profile card */
+    .profile{background:var(--card);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
+    .profile .pic{width:140px;height:140px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(6,8,12,0.6)}
+    .profile .pic img{width:100%;height:100%;object-fit:cover;display:block}
+    .profile h3{margin:0}
+    .profile p{margin:0;color:var(--muted);font-size:13px}
+
+    /* layout helpers */
+    section{margin-bottom:36px}
+    .two-col{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
+    @media (max-width:980px){.two-col{grid-template-columns:1fr;}.hero{grid-template-columns:1fr}}
+
+    /* about/education */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .timeline .item{display:flex;gap:12px;align-items:flex-start}
+    .timeline .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);margin-top:6px}
+    .timeline h4{margin:0;font-size:15px}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* skills */
+    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .skill{min-width:150px;flex:1 1 220px;background:var(--glass);padding:12px;border-radius:10px}
+    .skill .label{display:flex;justify-content:space-between;color:var(--muted);font-weight:600;font-size:13px}
+    .bar{height:8px;background:rgba(255,255,255,0.04);border-radius:8px;margin-top:8px;overflow:hidden}
+    .bar > i{display:block;height:100%;width:60%;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+    /* services (centered) */
+    #services{max-width:var(--maxcontent);margin:0 auto;text-align:center}
+    .services-card{padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));box-shadow:0 12px 40px rgba(3,8,23,0.5)}
+    .service-list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:12px}
+    .service-pill{background:rgba(255,255,255,0.02);padding:10px 14px;border-radius:999px;font-weight:600;color:var(--muted)}
+
+    /* portfolio */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:14px}
+    .project{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));min-height:160px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .18s ease}
+    .project:hover{transform:translateY(-6px)}
+    .project img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:8px}
+
+    /* certificates (centered) */
+    #certificates{max-width:760px;margin:24px auto 0 auto;text-align:center}
+    .certs{display:flex;flex-direction:column;gap:16px;align-items:center;margin-top:12px}
+    .cert{width:100%;max-width:520px;background:linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01));padding:14px;border-radius:12px;text-align:left;box-shadow:0 6px 24px rgba(0,0,0,0.45)}
+    .cert img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+    .cert .meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+    .download-btn{padding:8px 10px;border-radius:10px;border:0;background:transparent;color:var(--accent);cursor:pointer;font-weight:700}
+
+    /* contact */
+    form{display:grid;gap:10px}
+    .row{display:flex;gap:10px}
+    .row .col{flex:1}
+    input,textarea{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);padding:10px;border-radius:10px;color:inherit;outline:none;font-size:14px}
+    textarea{min-height:120px;resize:vertical}
+
+    footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* small screens */
+    @media (max-width:520px){
+      nav{display:flex;gap:12px;flex-wrap:wrap}
+      .profile .pic{width:120px;height:120px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <div class="logo">ST</div>
+        <div>
+          <h1>SAI TEJA S</h1>
+          <p>BCA Student — Agurchand Manmull Jain College (Madras Univ.)</p>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card">
+        <h2>SAI TEJA S</h2>
+        <div class="tag">Aspiring Data Scientist • UI/UX Enthusiast • Full Stack Developer</div>
+        <p>I am currently pursuing a Bachelor of Computer Applications (BCA) at Agurchand Manmull Jain College, affiliated with Madras University, expected to graduate in 2027. I build user-focused interfaces, analyze data, and create full-stack web solutions.</p>
+
+        <div class="ctas">
+  <a class="btn primary" href="#portfolio">View Portfolio</a>
+  <a class="btn" href="M:\sai teja\SaiTeja_ATS_Friendly_Resume[1].pdf" download>Download Resume</a>
+</div>
+
+
+        <p class="small" style="margin-top:16px"><strong>Email:</strong> <a href="mailto:24h029@amjaincollege.edu.in" style="color:var(--accent)">24h029@amjaincollege.edu.in</a></p>
+      </div>
+
+      <aside class="profile card" aria-labelledby="profile-heading">
+        <div class="pic" role="img" aria-label="Sai Teja profile photo">
+          <!-- Replace the src below with your image path (e.g., assets/profile.jpg) -->
+          <img src="M:\sai teja\profile.jpg" alt="Sai Teja — profile photo" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x400?text=Profile'">
+        </div>
+        <h3 id="profile-heading">SAI TEJA S</h3>
+        <p class="small">BCA Student • Madras University — Expected 2027</p>
+        <div style="display:flex;gap:8px;margin-top:8px">
+        </div>
+      </aside>
+    </div>
+
+    <!-- ABOUT + EDUCATION -->
+    <section id="about" class="card">
+      <div class="two-col">
+        <div>
+          <h3>About</h3>
+          <p>I am <strong>SAI TEJA S</strong>, currently studying BCA at Agurchand Manmull Jain College (Madras University). I enjoy turning data into insights, designing simple interfaces, and building full-stack projects. I'm constantly learning tools like Python, React, and Figma to grow in Data Science and UI/UX.</p>
+
+          <h4 style="margin-top:18px">Education</h4>
+          <div class="timeline">
+            <div class="item">
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <h4>Bachelor of Computer Applications (BCA)</h4>
+                <p class="small">Agurchand Manmull Jain College — Madras University (2024 – 2027 expected)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          <h4>Quick Facts</h4>
+          <p class="small"><strong>Location:</strong> Chennai, India</p>
+          <p class="small"><strong>Interests:</strong> Data Science, UI/UX, Web Development</p>
+          <p class="small"><strong>Currently learning:</strong> React, scikit-learn, Figma</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="card">
+      <h3>Skills</h3>
+      <div class="skills">
+        <div class="skill">
+          <div class="label"><span>Data Science</span><span>Intermediate</span></div>
+          <div class="bar"><i style="width:70%"></i></div>
+          <div class="small" style="margin-top:8px">Python • Pandas • NumPy • scikit-learn • SQL</div>
+        </div>
+
+        <div class="skill">
+          <div class="label"><span>UI / UX Design</span><span>Beginner → Intermediate</span></div>
+          <div class="bar"><i style="width:55%"></i></div>
+          <div class="small" style="margin-top:8px">Figma • Wireframing • Prototyping</div>
+        </div>
+
+        <div class="skill">
+          <div class="label"><span>Full Stack Development</span><span>Beginner → Intermediate</span></div>
+          <div class="bar"><i style="width:50%"></i></div>
+          <div class="small" style="margin-top:8px">HTML • CSS • JavaScript • React • Node.js</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES (centered) -->
+    <section id="services">
+      <div class="services-card">
+        <h3>Services (Optional)</h3>
+        <p class="small">I offer design and development support for small projects and student assignments. These are placeholders you can enable later as you accept work.</p>
+        <div class="service-list" aria-hidden="false">
+          <div class="service-pill">Web Design</div>
+          <div class="service-pill">UI/UX Consulting</div>
+          <div class="service-pill">Data Analysis</div>
+          <div class="service-pill">Full Stack Dev</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="card">
+      <h3>Portfolio</h3>
+      <p class="small">Projects will appear here as they are completed. Each card will include a short description, technologies used, and link to the live demo or code.</p>
+
+      <div class="grid">
+        <div class="project">
+          <div>
+            <h4>Project — Coming Soon</h4>
+            <p class="small">Placeholder project — details will be added when completed.</p>
+          </div>
+          <img src="M:\sai teja\uiproject.jpg" alt="Project preview">
+        </div>
+
+        <div class="project">
+          <div>
+            <h4>Project — Coming Soon</h4>
+            <p class="small">Placeholder project — details will be added when completed.</p>
+          </div>
+          <img src="M:\sai teja\data .jpg" alt="Project preview">
+        </div>
+
+        <div class="project">
+          <div>
+            <h4>Project — Coming Soon</h4>
+            <p class="small">Placeholder project — details will be added when completed.</p>
+          </div>
+          <img src="M:\sai teja\full stack.jpg" alt="Project preview">
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES (centered) -->
+    <section id="certificates" class="card">
+      <h3>Certificates</h3>
+      <p class="small">Below are placeholders for certificates. Replace the images with scans (jpg/png) and set the download buttons to your PDF files.</p>
+
+      <div class="certs">
+        <div class="cert" role="article" aria-label="Certificate 1">
+          <img src="M:\sai teja\full.jpg" alt="Certificate 1" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x500?text=Certificate+1'">
+          <div style="margin-top:8px;font-weight:700">Certificate Title 1</div>
+          <div class="meta">
+            <div class="small">Issued by: Institution</div>
+            <div><button class="download-btn" data-file="assets/cert1.pdf" onclick="downloadCert(event)">Download</button></div>
+          </div>
+        </div>
+
+        <div class="cert" role="article" aria-label="Certificate 2">
+          <img src="M:\sai teja\ui.jpg" alt="Certificate 2" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x500?text=Certificate+2'">
+          <div style="margin-top:8px;font-weight:700">Certificate Title 2</div>
+          <div class="meta">
+            <div class="small">Issued by: Institution</div>
+            <div><button class="download-btn" data-file="assets/cert2.pdf" onclick="downloadCert(event)">Download</button></div>
+          </div>
+        </div>
+
+        <div class="cert" role="article" aria-label="Certificate 3">
+          <img src="M:\sai teja\data science.png" alt="Certificate 3" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x500?text=Certificate+3'">
+          <div style="margin-top:8px;font-weight:700">Certificate Title 3</div>
+          <div class="meta">
+            <div class="small">Issued by: Institution</div>
+            <div><button class="download-btn" data-file="assets/cert3.pdf" onclick="downloadCert(event)">Download</button></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:12px;color:var(--muted)">Tip: export certificates at ~1200px width and compress (≤300 KB) for fast loading. Use PDFs for official downloads.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card">
+      <h3>Contact</h3>
+      <p class="small">Send me a message — I typically respond within a few days. Or email me at <a href="mailto:24h029@amjaincollege.edu.in" style="color:var(--accent)">24h029@amjaincollege.edu.in</a></p>
+
+      <form id="contactForm" onsubmit="handleContact(event)" aria-label="Contact form">
+        <div class="row">
+          <div class="col"><input required id="name" placeholder="Your name" aria-label="Your name"></div>
+          <div class="col"><input required id="email" type="email" placeholder="Your email" aria-label="Your email"></div>
+        </div>
+
+        <textarea required id="message" placeholder="Your message..." aria-label="Your message"></textarea>
+
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="btn primary" type="submit">Send Message</button>
+          <div id="contactStatus" class="small" style="color:var(--muted)"></div>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      © <span id="year"></span> SAI TEJA S — Built with ❤️ • Responsive • Minimal • Professional
+    </footer>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Resume download (replace with your file path)
+    document.getElementById('downloadResumeBtn').addEventListener('click', function(){
+      const file = 'assets/resume.pdf'; // update to your resume path
+      const a = document.createElement('a');
+      a.href = file;
+      a.download = 'SAI-TEJA-Resume.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
+
+    // Certificate download handler
+    function downloadCert(e){
+      const btn = e.currentTarget;
+      const file = btn.getAttribute('data-file') || 'assets/certificate.pdf';
+      const a = document.createElement('a');
+      a.href = file;
+      a.download = file.split('/').pop();
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    // Simple contact form (simulated). Connect to Formspree/Netlify/Axios fetch to make it functional.
+    function handleContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const status = document.getElementById('contactStatus');
+
+      if(!name || !email || !message){
+        status.textContent = 'Please fill all fields.';
+        return;
+      }
+
+      status.textContent = 'Sending…';
+      setTimeout(() => {
+        status.textContent = 'Message sent — thank you! (Demo mode)';
+        document.getElementById('contactForm').reset();
+      }, 900);
+    }
+  </script>
+</body>
+</html>
